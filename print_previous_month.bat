@@ -1,6 +1,6 @@
 @echo off & setlocal enabledelayedexpansion
 REM batch script to print month 
-REN Receives arguments as number of months to go back
+REM Receives arguments as number of months to go back
 set exitfaster=0
 REM reliably retrieve current date/time using wmic
 REM works across systems
