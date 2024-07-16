@@ -1,6 +1,5 @@
 @echo off & setlocal enabledelayedexpansion
 REM batch script to print month 
-REM Receives arguments as number of months to go back
 set exitfaster=0
 REM reliably retrieve current date/time using wmic
 REM works across systems
@@ -14,8 +13,8 @@ set /p howmany=how many months you want to go back?
 
 :print
 REM reliably get previous months number
-set /a previous_month=current_month-%howmany%
-REM handle exceptional cases where result of above is going to be 0
+set /a mod=%howmany% %% 12
+set /a previous_month=current_month-mod
 if %previous_month%==0 set previous_month=12
 if %previous_month% LSS 0 set /a previous_month=12+previous_month
 
