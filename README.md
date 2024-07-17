@@ -1,4 +1,4 @@
-```Now supports previous and next month.``` 
+```Now supports previous and upcoming months.``` 
 
 ```Syntax - ```<br>
 ```print_previous_month.bat [number] [+/-]```
