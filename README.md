@@ -1,1 +1,2 @@
-`print_previous_month.bat 2`
+`Now supports previous and next month.
+print_previous_month.bat [number] [+/-]`
