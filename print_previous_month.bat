@@ -8,13 +8,13 @@ REM extract month from date, 4th to 6th character
 set current_month=%current_date:~4,2%
 
 REM ask user how long he wants to go back
-if "%1" NEQ "" set exitfaster=1&set howmany=%1 & goto :print
-set /p howmany=how many months you want to go back?
+set exitfaster=1&set howmany=%1
+if "%2" == "+" (set operator_= + ) else (set operator_= - )
 
 :print
 REM reliably get previous months number
 set /a mod=%howmany% %% 12
-set /a previous_month=current_month-mod
+set /a previous_month=current_month%operator_%mod
 if %previous_month%==0 set previous_month=12
 if %previous_month% LSS 0 set /a previous_month=12+previous_month
 
