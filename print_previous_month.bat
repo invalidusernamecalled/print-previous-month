@@ -11,14 +11,14 @@ REM reliably retrieve current date/time using wmic
 REM works across systems
 for /f "tokens=1 delims=." %%i in ('wmic os get localdatetime ^| findstr /r "[0-9]"') do set current_date=%%i
 REM extract month from date, 4th to 6th character
-set current_month=%current_date:~4,2%
-
-
-
+if "%current_date:~4,1%"=="0" (set current_month=%current_date:~5,1%
+) else (set current_month=%current_date:~4,2%)
 :print
 REM reliably get previous months number
-set /a mod=%howmany% %% 12
-set /a previous_month=current_month+mod
+set mod=%howmany%
+if %howmany% LSS -12 set /a mod=%howmany% %% 12
+if %howmany% GTR 12 set /a mod=%howmany% %% 12
+set /a previous_month=!current_month! + !mod!
 if %previous_month%==0 set previous_month=12
 if %previous_month% LSS 0 set /a previous_month=12+previous_month
 if %previous_month% GTR 12 set /a  previous_month=previous_month %% 12
